@@ -19,19 +19,40 @@ class MeuApp extends StatelessWidget{
           ),
           backgroundColor: const Color.fromARGB(255, 87, 17, 17)
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Will?"),
-              Icon(Icons.dangerous),
-              Text("Ve no sofa"),
-              Text("Halkins."),
-              Text("23/03/2026")
-            ],
-          )
-        )
+        body: PaginaInicial()
       )
     );
   } 
+}
+
+class PaginaInicial extends StatefulWidget{
+  @override
+  State<PaginaInicial> createState() => _PaginaInicialState();
+}
+
+class _PaginaInicialState extends State<PaginaInicial>{
+
+  int a = 0;
+  String get texto => a <= 1 ? 'Você procurou o Will no sofa  $a  vez' : 'Você procurou o Will no sofa  $a  vezes';
+
+  @override
+  Widget build(BuildContext context){
+    return Center(
+      child: Column( 
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(texto),
+          ElevatedButton(
+            child: Text('Procurar Will no sofa'),
+            onPressed: () { 
+              setState(() {
+                a++;
+              });
+              
+            } ,
+          )
+        ],
+      ),
+    );
+  }
 }
